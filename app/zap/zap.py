@@ -2,10 +2,10 @@ import csv
 import json
 import logging
 
-report_path = "../../zap.json"
+report_path = "zap-report.json"
 # Opening JSON file
 
-f = open('../../testreport.json')
+f = open('report.json')
 
 # returns JSON object as
 # a dictionary
