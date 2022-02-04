@@ -2,23 +2,15 @@ import csv
 import json
 import logging
 
-report_path = "zap-report.json"
-# Opening JSON file
+report_path = "/zap/wrk/app/reports/zap-report.json"
 
-f = open('report.json')
-
-# returns JSON object as
-# a dictionary
+f = open('/zap/wrk/app/reports/report.json')
 data = json.load(f)
 report = {
     "alerts": []
 }
-# Iterating through the json
-# list
 
 count = 0
-
-# print(data['site'][0]['alerts'])
 for i in data['site'][0]['alerts']:
     count += 1
     report['alerts'].append({
@@ -34,5 +26,4 @@ for i in data['site'][0]['alerts']:
 with open(report_path, 'w') as outfile:
     json.dump(report, outfile)
 
-# Closing file
 f.close()
