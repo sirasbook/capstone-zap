@@ -60,12 +60,20 @@ def fullscan(req_body: Zap_input = Body(...)) -> Response:
     try:
         if req_body:
             url = req_body.url
+            clear_reports()
             os.system(f'/bin/sh -c "app/zap/start-fullscan.sh {url}"')
+
+            data = load_json()
+            result = {
+                "alerts": []
+            }
+
+            for obj in data['alerts']:
+                result['alerts'].append(obj)
+
             return JSONResponse(
                 status_code = 200,
-                content = {
-                    "message": "Success",
-                },
+                content = result
             )
         else:
             return JSONResponse(
