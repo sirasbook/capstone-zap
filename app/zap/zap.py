@@ -14,13 +14,16 @@ count = 0
 for i in data['site'][0]['alerts']:
     count += 1
     report['alerts'].append({
-        'alert-no': count,
+        'alert_no': count,
         'name': i['name'],
         'risk': i['riskdesc'],
         'description': i['desc'],
         'instances': i['instances'],
+        'count': i['count'],
         'solutions': i['solution'],
-        'reference': i['reference']
+        'reference': i['reference'],
+        'cweid': i['cweid'],
+        'refid': i['alertRef']
     })
 
 with open(report_path, 'w') as outfile:
