@@ -1,5 +1,3 @@
-python3 -m venv env
-source env/bin/activate
-pip install -r requirement.txt
+## Run Program
 
-python main.py
+### `bash start_service.sh`
