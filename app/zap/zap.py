@@ -11,20 +11,22 @@ report = {
 }
 
 count = 0
-for i in data['site'][0]['alerts']:
-    count += 1
-    report['alerts'].append({
-        'alert_no': count,
-        'name': i['name'],
-        'risk': i['riskdesc'],
-        'description': i['desc'],
-        'instances': i['instances'],
-        'count': i['count'],
-        'solutions': i['solution'],
-        'reference': i['reference'],
-        'cweid': i['cweid'],
-        'refid': i['alertRef']
-    })
+
+for i in range(len(data['site'])):
+    for j in data['site'][i]['alerts']:
+        count += 1
+        report['alerts'].append({
+            'alert_no': count,
+            'name': j['name'],
+            'risk': j['riskdesc'],
+            'description': j['desc'],
+            'instances': j['instances'],
+            'count': j['count'],
+            'solutions': j['solution'],
+            'reference': j['reference'],
+            'cweid': j['cweid'],
+            'refid': j['alertRef']
+        })
 
 with open(report_path, 'w') as outfile:
     json.dump(report, outfile)
